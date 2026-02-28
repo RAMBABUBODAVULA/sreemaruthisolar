@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact Us - Sree Maruthi Solar</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <div id="site-header"></div>
+        <script src="js/header.js"></script>
+        <main class="container">
+            <h1>Contact Us</h1>
+            <div class="contact-grid">
+                <section>
+                    <h2>Head Office</h2>
+                    <p>
+                        Mr. Veerraju Madapati<br>
+                        3-6-15/4, Chekka vari street, Near Town Railway station,<br>
+                        Bhimavaram, 534202, West godavari,<br>
+                        Andhra Pradesh, India.
+                    </p>
+                    <p>
+                        <strong>Mobile:</strong> 9848529489<br>
+                        <strong>Email:</strong>
+                        <a href="mailto:Sreemaruthisolar@gmail.com">Sreemaruthisolar@gmail.com</a>
+                    </p>
+                </section>
+                <section>
+                    <h2>Send an Enquiry</h2>
+                    <!-- <form action="mailto:Sreemaruthisolar@gmail.com" method="post" enctype="text/plain">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <button type="submit">Submit Enquiry</button>
+                    </form> -->
+                    <!-- modify this form HTML and place wherever you want your form -->
+                    <form action="https://formspree.io/f/xlgwvqra" method="POST">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                        <label for="email">Your email:</label>
+                        <input type="email" id="email" name="email">
+                        <label for="message">Your message:</label>
+                        <textarea id="message" name="message"></textarea>
+                        <input type="hidden" name="_redirect" value="http://localhost:8000/contact.html">
+                        <!-- your other form fields go here -->
+                        <button type="submit">Send</button>
+                    </form>
+                </section>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; <span id="year"></span> Sree Maruthi Solar</p>
+            <script>
+                document.getElementById('year').textContent = new Date().getFullYear();
+            </script>
+        </footer>
+    </body>
+</html>
