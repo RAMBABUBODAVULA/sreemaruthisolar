@@ -33,8 +33,7 @@ header.site-header {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
 }
 .nav-bar {
-    background-color: #1f4e79;
-    background-color: #ffd580;
+    background-color: #FFB400;
     padding: 10px 16px;
     border-radius: 0;
     width: 100%;
@@ -73,31 +72,43 @@ header.site-header {
     width: 100%;
     max-width: 100%;
     min-width: 0;
-    gap: 14px;
+    gap: 32px;
 }
 .nav-bar li {
     margin: 0;
 }
 .nav-bar a {
     display: inline-block;
-    background: #ffffff;
-    color: #1f4e79;
+    background: #1E3A5F;
+    color: #FFFFFF;
     padding: 8px 12px;
     border-radius: 4px;
     text-decoration: none;
-    box-shadow: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
     font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
 }
 .nav-bar a.active,
 .nav-bar a:hover {
-    background: #205a2b;
+    background: #0c6811;
     color: #ffffff;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+    border-color: #fff;
 }
 .hero {
     margin-bottom: 14px;
 }
 .hero h1 {
     margin-bottom: 8px;
+}
+.hero-company-name,
+.hero-company-name strong {
+    color: #f00f0f !important;
+}
+.hero-company-name {
+    margin: 0 0 10px;
 }
 .info-card {
     background: #fff;
@@ -113,11 +124,24 @@ footer {
     margin-top: 40px;
 }
 .container {
-    padding: 20px;
+    padding: 10px 5px;
     max-width: 1000px;
     margin: 12px auto 0;
     background: #fff;
     min-height: 65vh;
+    box-sizing: border-box;
+}
+/* Product sub-items styling */
+.container ul ul {
+    margin-left: 30px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    list-style-type: circle;
+}
+.container ul ul li {
+    margin: 4px 0;
+    color: #555;
+    font-size: 0.95em;
 }
 /* Slider */
 .slider-container {
@@ -125,14 +149,33 @@ footer {
     justify-content: space-between;
     margin: 20px 0;
     gap: 20px;
+    align-items: flex-start;
 }
 .slider-text,
 .slider-images {
     width: 48%;
     overflow: hidden;
 }
+.slider-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.slider-images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .slider-content {
     display: none;
+}
+/* Ensure all slider images have uniform size */
+.slider-images .slider-content {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 /* Gallery thumbnails */
 .gallery {
@@ -141,11 +184,18 @@ footer {
     justify-content: center;
 }
 .gallery img {
-    width: 200px;
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
     margin: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 /* Table styling */
 table {
@@ -165,7 +215,53 @@ table th {
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    grid-auto-rows: 1fr;
+    gap: 3px;
+    justify-items: stretch;
+    align-items: stretch;
+    width: 100%;
+    box-sizing: border-box;
+}
+.contact-grid section {
+    max-width: 100%;
+    width: 100%;
+    padding: 6px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.contact-grid section h2 {
+    color: #1f4e79;
+    border-bottom: 1px solid #FFB400;
+    padding-bottom: 3px;
+    margin: 0 0 6px 0;
+    font-size: 0.95em;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+.contact-grid address {
+    font-style: normal;
+    margin: 3px 0;
+    padding: 3px 0 3px 5px;
+    line-height: 1.5;
+    font-size: 0.95em;
+    background: #fff;
+    border-left: 1px solid #FFB400;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
+}
+.contact-grid address:first-of-type {
+    margin-top: 0;
+}
+.contact-grid address.contact-info {
+    background: #f0f8ff;
+    border-left-color: #1f4e79;
 }
 .contact-grid form {
     background: #f9f9f9;
@@ -237,6 +333,9 @@ table th {
     .contact-grid {
         grid-template-columns: 1fr;
     }
+    .contact-grid section {
+        padding: 15px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -282,8 +381,10 @@ table th {
     z-index: 1000;
 }
 .lightbox img {
-    max-width: 90%;
-    max-height: 80%;
+    max-width: 85%;
+    max-height: 75vh;
+    object-fit: contain;
+    border-radius: 8px;
 }
 /* Logo style for navbar */
 .navbar-logo {

@@ -1,36 +1,28 @@
 // Common slider script used on home page
+// Syncs text and image slides together
 
 const imageSlides = document.querySelectorAll('.slider-images .slider-content');
 const textSlides = document.querySelectorAll('.slider-text .slider-content');
-let imageIndex = 0;
-let textIndex = 0;
+let slideIndex = 0;
 
-function showSlide(slides, index) {
-    slides.forEach((slide, i) => {
+function showSlide(index) {
+    // Show image and text at the same index
+    imageSlides.forEach((slide, i) => {
+        slide.style.display = i === index ? 'block' : 'none';
+    });
+    textSlides.forEach((slide, i) => {
         slide.style.display = i === index ? 'block' : 'none';
     });
 }
 
-function nextSlide(slides, index) {
-    return (index + 1) % slides.length;
-}
-
-function showImageSlide() {
-    showSlide(imageSlides, imageIndex);
-    imageIndex = nextSlide(imageSlides, imageIndex);
-}
-
-function showTextSlide() {
-    showSlide(textSlides, textIndex);
-    textIndex = nextSlide(textSlides, textIndex);
-}
-
-// when DOM is ready start the cycles
+// when DOM is ready start the cycle
 window.addEventListener('DOMContentLoaded', () => {
-    if (imageSlides.length && textSlides.length) {
-        setInterval(showImageSlide, 3000);
-        setInterval(showTextSlide, 3000);
-        showImageSlide();
-        showTextSlide();
+    const totalSlides = Math.max(imageSlides.length, textSlides.length);
+    if (totalSlides > 0) {
+        showSlide(0); // Show first slide
+        setInterval(() => {
+            slideIndex = (slideIndex + 1) % totalSlides;
+            showSlide(slideIndex);
+        }, 3000);
     }
 });
